@@ -3,7 +3,7 @@ import google.generativeai as genai
 
 st.set_page_config(page_title="AI Coding Assistant", page_icon="💻")
 
-st.title("💻 Asisten AI Koding Pribadi")
+st.title("💻 Asisten AI")
 st.write("Tanya apa saja!")
 
 # Ambil API key dari Secrets Streamlit
@@ -22,7 +22,7 @@ if api_key:
 
         if st.button("Kirim ke AI"):
             if user_prompt:
-                with st.spinner("Sedang meracik kode..."):
+                with st.spinner("Sedang mencari..."):
                     prompt_system = "Bertindaklah sebagai Senior Programmer. Berikan jawaban koding yang bersih, rapi, beserta penjelasan singkat.\n\n"
                     response = model.generate_content(prompt_system + user_prompt)
                     

@@ -4,7 +4,7 @@ import google.generativeai as genai
 st.set_page_config(page_title="AI Coding Assistant", page_icon="💻")
 
 st.title("💻 Asisten AI Koding Pribadi")
-st.write("Tanya apa saja seputar koding atau minta buatkan kode di sini!")
+st.write("Tanya apa saja!")
 
 # Ambil API key dari Secrets Streamlit
 api_key = st.secrets.get("GEMINI_API_KEY", "").strip()
@@ -18,7 +18,7 @@ if api_key:
         genai.configure(api_key=api_key)
         model = genai.GenerativeModel('gemini-3.6-flash')
 
-        user_prompt = st.text_area("Tuliskan pertanyaan atau kode yang ingin dibuat:")
+        user_prompt = st.text_area("Tuliskan pertanyaan:")
 
         if st.button("Kirim ke AI"):
             if user_prompt:
@@ -26,7 +26,7 @@ if api_key:
                     prompt_system = "Bertindaklah sebagai Senior Programmer. Berikan jawaban koding yang bersih, rapi, beserta penjelasan singkat.\n\n"
                     response = model.generate_content(prompt_system + user_prompt)
                     
-                    st.subheader("Hasil Koding / Jawaban:")
+                    st.subheader("Hasil:")
                     st.markdown(response.text)
             else:
                 st.warning("Isi dulu pertanyaannya!")

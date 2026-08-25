@@ -10,7 +10,8 @@ api_key = st.text_input("Masukkan Google Gemini API Key:", type="password")
 
 if api_key:
     genai.configure(api_key=api_key)
-    model = genai.GenerativeModel('gemini-1.5-flash')
+    # Menggunakan model Gemini versi terbaru
+    model = genai.GenerativeModel('gemini-2.5-flash')
 
     user_prompt = st.text_area("Tuliskan pertanyaan atau kode yang ingin dibuat:")
 
